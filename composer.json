@@ -1,0 +1,25 @@
+{
+    "name": "coamw2/laravel-airbrake",
+    "description": "Laravel service provider for Airbrake https://github.com/airbrake/phpbrake",
+    "keywords": ["airbrake", "laravel"],
+    "require": {
+        "php": ">=5.4",
+        "coamw2/phpbrake": "dev-master",
+        "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0|^10.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kouz\\LaravelAirbrake\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kouz\\LaravelAirbrake\\ServiceProvider"
+            ]
+        }
+    }
+}
