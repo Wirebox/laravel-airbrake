@@ -1,5 +1,5 @@
 {
-    "name": "coamw2/laravel-airbrake",
+    "name": "wirebox/laravel-airbrake",
     "description": "Laravel service provider for Airbrake https://github.com/airbrake/phpbrake",
     "keywords": ["airbrake", "laravel"],
     "require": {
