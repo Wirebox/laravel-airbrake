@@ -7,7 +7,7 @@ The service provider will configure an instance of Airbrake\Notifier with an ID,
 ## Install
 Require this package via composer.
 ```
-composer require kouz/laravel-airbrake
+composer require wirebox/laravel-airbrake
 ```
 For Laravel >=5.5 the package will be discoverd. For Laravel <=5.4 add package to list of service providers in config/app.php
 ```
@@ -16,12 +16,12 @@ For Laravel >=5.5 the package will be discoverd. For Laravel <=5.4 add package t
     //config/app.php
   
     'providers' => [
-        Kouz\LaravelAirbrake\ServiceProvider::class,
+        wirebox\LaravelAirbrake\ServiceProvider::class,
     ],
 ```
 Publish and fill out the config/airbrake.php file with your ID and key.
 ```
-php artisan vendor:publish --provider="Kouz\LaravelAirbrake\ServiceProvider"
+php artisan vendor:publish --provider="wirebox\LaravelAirbrake\ServiceProvider"
 ```
 
 ## Config
@@ -55,7 +55,7 @@ Add the custom "airbrake" channel (outlined below) to config/logging.php. Then a
 
         'airbrake' => [
             'driver' => 'custom',
-            'via' => Kouz\LaravelAirbrake\AirbrakeLogger::class,
+            'via' => wirebox\LaravelAirbrake\AirbrakeLogger::class,
             'level' => 'error',
         ],
     ]
@@ -95,7 +95,7 @@ before the service providers are loaded. So it is necessary to directly use our 
 //bootstrap/app.php
 
 $app->configureMonologUsing(function($monolog) use ($app) {
-    $airbrakeNotifier = (new Kouz\LaravelAirbrake\AirbrakeHandler($app))->handle();
+    $airbrakeNotifier = (new wirebox\LaravelAirbrake\AirbrakeHandler($app))->handle();
     $monologHandler = new Airbrake\MonologHandler($airbrakeNotifier, Monolog\Logger::ERROR);
     $monolog->pushHandler($monologHandler);
 });
