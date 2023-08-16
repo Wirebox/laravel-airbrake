@@ -16,7 +16,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "wirebox\\LaravelAirbrake\\": "src/"
+            "Wirebox\\LaravelAirbrake\\": "src/"
         }
     },
     "minimum-stability": "stable",
@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "wirebox\\LaravelAirbrake\\ServiceProvider"
+                "Wirebox\\LaravelAirbrake\\ServiceProvider"
             ]
         }
     }

@@ -16,12 +16,12 @@ For Laravel >=5.5 the package will be discoverd. For Laravel <=5.4 add package t
     //config/app.php
   
     'providers' => [
-        wirebox\LaravelAirbrake\ServiceProvider::class,
+        Wirebox\LaravelAirbrake\ServiceProvider::class,
     ],
 ```
 Publish and fill out the config/airbrake.php file with your ID and key.
 ```
-php artisan vendor:publish --provider="wirebox\LaravelAirbrake\ServiceProvider"
+php artisan vendor:publish --provider="Wirebox\LaravelAirbrake\ServiceProvider"
 ```
 
 ## Config
@@ -55,7 +55,7 @@ Add the custom "airbrake" channel (outlined below) to config/logging.php. Then a
 
         'airbrake' => [
             'driver' => 'custom',
-            'via' => wirebox\LaravelAirbrake\AirbrakeLogger::class,
+            'via' => Wirebox\LaravelAirbrake\AirbrakeLogger::class,
             'level' => 'error',
         ],
     ]
@@ -95,7 +95,7 @@ before the service providers are loaded. So it is necessary to directly use our 
 //bootstrap/app.php
 
 $app->configureMonologUsing(function($monolog) use ($app) {
-    $airbrakeNotifier = (new wirebox\LaravelAirbrake\AirbrakeHandler($app))->handle();
+    $airbrakeNotifier = (new Wirebox\LaravelAirbrake\AirbrakeHandler($app))->handle();
     $monologHandler = new Airbrake\MonologHandler($airbrakeNotifier, Monolog\Logger::ERROR);
     $monolog->pushHandler($monologHandler);
 });

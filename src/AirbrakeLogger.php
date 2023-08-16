@@ -1,6 +1,6 @@
 <?php
 
-namespace wirebox\LaravelAirbrake;
+namespace Wirebox\LaravelAirbrake;
 
 use Airbrake\MonologHandler;
 use Airbrake\Notifier;
