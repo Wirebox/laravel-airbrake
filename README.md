@@ -27,8 +27,8 @@ php artisan vendor:publish --provider="Wirebox\LaravelAirbrake\ServiceProvider"
 ## Config
 The variables projectId and projectKey are required. Leave the rest empty to use Airbrake's default values.
 ```
-    'projectId'     => '',
-    'projectKey'    => '',
+    'projectId'     => env('AIRBRAKE_ID', ''),
+    'projectKey'    => env('AIRBRAKE_KEY', ''),
     'environment'   => env('APP_ENV', 'production'),
 
     //leave the following options empty to use defaults
