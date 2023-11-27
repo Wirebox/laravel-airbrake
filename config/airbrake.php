@@ -2,9 +2,11 @@
 
 return [
 
-    'projectId'     => '',
-    'projectKey'    => '',
-    'environment'   => env('APP_ENV', 'production'),
+    'projectId' => env('AIRBRAKE_ID', ''),
+
+    'projectKey' => env('AIRBRAKE_KEY', ''),
+
+    'environment' => env('AIRBRAKE_ENV', 'production'),
 
     //leave the following options empty to use defaults
     
