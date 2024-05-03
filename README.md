@@ -64,14 +64,26 @@ Add the custom "airbrake" channel (outlined below) to config/logging.php. Then a
 ### Exception Handler
 To notify airbrake through the laravel exception handler as shown in the following code snippet. Inject or make a new instance
 of a Airbrake\Notifier object then pass a exception to the notify function.
-
+### Laravel 11
+Update the withExceptions method of the app exceptions handler
 ```
-//app/Exceptions/Handler.php
 
+//bootstrap/app.php
+->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->report(function (Throwable $th) { // The Exceptions collection will contain Throwable instances. Useful for reporting PHP fatal errors.
+            if (App::environment('staging', 'production') ) {
+                $airbrakeNotifier = App::make('Airbrake\Notifier');
+                $airbrakeNotifier->notify($th);
+            }
+        });
+    })...
+
+//app/Exceptions/Handler.php
+```
+### < Laravel 11
+```
 /**
  * Report or log an exception.
- *
- * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
  *
  * @param  \Exception  $exception
  * @return void
